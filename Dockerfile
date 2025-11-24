@@ -4,7 +4,9 @@ FROM registry.fedoraproject.org/fedora-minimal:43 AS builder
 RUN dnf -y update && \
     dnf -y install \
         shadow-utils sudo util-linux util-linux-script xz \
-        xorg-x11-server-Xvfb dbus-x11 && \
+        xorg-x11-server-Xvfb dbus-x11 dnf5-plugins && \
+    dnf config-manager addrepo --from-repofile=https://cli.github.com/packages/rpm/gh-cli.repo && \
+    dnf install gh --repo gh-cli && \
     dnf clean all && rm -rf /var/cache/dnf
 
 RUN dnf -y install \
