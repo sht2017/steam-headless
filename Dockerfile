@@ -35,7 +35,9 @@ RUN mkdir -p /runtime && \
 # ---------- 2) runtime ----------
 FROM registry.fedoraproject.org/fedora-minimal:43 AS runtime
 
-RUN useradd -m steam
+RUN useradd -m steam && \
+    passwd -d steam && \
+    echo "steam ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 COPY --from=builder /runtime/ /
 
