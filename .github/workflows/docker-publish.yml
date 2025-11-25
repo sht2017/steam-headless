@@ -77,9 +77,7 @@ jobs:
         if: github.event_name != 'pull_request'
         uses: redhat-actions/push-to-registry@v2
         with:
-          image: ${{ steps.build-image.outputs.image }}
           tags: ${{ steps.build-image.outputs.tags }}
-          registry: ${{ env.REGISTRY }}
 
       # Sign..
       - name: Sign the published Docker image
