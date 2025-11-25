@@ -42,5 +42,4 @@ RUN apt-get clean && \
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
-USER steam
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
